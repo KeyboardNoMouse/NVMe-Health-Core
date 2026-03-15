@@ -198,23 +198,6 @@ nvme-health-core
 └── README.md
 ```
 
----
-
-# 👥 Project Team
-
-**Ritun Jain**
-Project Lead — ML Architecture & Full-Stack Integration
-
-**Member 2 Name**
-Data Engineering & Exploratory Data Analysis
-
-**Member 3 Name**
-Statistical Modeling & Validation
-
-**Member 4 Name**
-UI/UX Design & Documentation
-
----
 
 # ⭐ Future Improvements
 
