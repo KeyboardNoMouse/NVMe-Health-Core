@@ -1,9 +1,8 @@
 pandas
-matplotlib
-seaborn
 scikit-learn
-imbalanced-learn
 joblib
-streamlit
+streamlit>=1.31.0
+altair<5.0.0
+imbalanced-learn
 streamlit-lottie
 requests
