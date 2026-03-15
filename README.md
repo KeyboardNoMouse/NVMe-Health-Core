@@ -1,4 +1,4 @@
-# ⚡ Lenovo NVMe Health Core: Predictive Telemetry Analysis
+# ⚡ NVMe Health Core: Predictive Telemetry Analysis
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge\&logo=python\&logoColor=white)
 ![Scikit-Learn](https://img.shields.io/badge/scikit--learn-%23F7931E.svg?style=for-the-badge\&logo=scikit-learn\&logoColor=white)
