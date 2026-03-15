@@ -1,31 +1,231 @@
-# ⚡ NVMe Health Core: Predictive Telemetry Analysis
+# ⚡ Lenovo NVMe Health Core: Predictive Telemetry Analysis
 
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![Scikit-Learn](https://img.shields.io/badge/scikit--learn-%23F7931E.svg?style=for-the-badge&logo=scikit-learn&logoColor=white)
-![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=Streamlit&logoColor=white)
-![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge\&logo=python\&logoColor=white)
+![Scikit-Learn](https://img.shields.io/badge/scikit--learn-%23F7931E.svg?style=for-the-badge\&logo=scikit-learn\&logoColor=white)
+![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge\&logo=streamlit\&logoColor=white)
+![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge\&logo=pandas\&logoColor=white)
 
-An enterprise-grade AI diagnostic engine and full-stack web interface built to predict NVMe drive failures across Lenovo ThinkSystem servers and ThinkPad devices before they occur.
+An **enterprise-grade AI diagnostic engine and full-stack web interface** built to predict NVMe drive failures across **Lenovo ThinkSystem servers and ThinkPad devices** before they occur.
 
-## 🎯 Executive Summary
-Currently, NVMe failures are detected reactively—only after severe errors or hardware bricking. This project shifts the paradigm to **predictive maintenance**. By systematically analyzing device-level SMART telemetry (temperature, error rates, lifetime usage), this machine learning engine identifies the recurring signatures of hardware degradation. This allows IT administrators to replace high-risk drives safely before experiencing catastrophic data loss or system downtime.
+---
 
-## 🚀 Key Features
-* **Random Forest Engine:** A robust classification model trained to identify complex, non-linear relationships in raw hardware telemetry.
-* **Advanced Data Balancing (SMOTE):** Engineered synthetic telemetry data to overcome a 98% class imbalance, allowing the model to successfully detect extremely rare firmware crashes and early-life manufacturing defects.
-* **ThinkSystem Dashboard:** A sleek, interactive web interface built with Streamlit, featuring custom Lenovo-branded CSS and real-time fleet diagnostic metrics.
+# 🎯 Executive Summary
 
-## 🧠 Hardware Failure Patterns
-Based on the provided synthetic dataset representing real-world NVMe SMART logs, we performed Exploratory Data Analysis (EDA) and trained the model to isolate the following distinct anomaly clusters:
-* **Pattern 1 (Wear-Out Failure):** Drives nearing end-of-life with maxed-out TBW (Terabytes Written) and life percentage used.
-* **Pattern 4 (Controller/Firmware Failure):** Controller instability characterized by massive spikes in read/write error rates without physical media errors.
-* **Pattern 5 (Early-Life Defect):** Rapid error accumulation in early usage (<3000 hours), indicating manufacturing flaws.
+Currently, NVMe failures are detected **reactively** — only after severe errors or complete hardware failure.
 
-*(Note: Thermal Failures and Power-Related Failures are supported by the architecture but were not present in the provided synthetic dataset.)*
+This project shifts the paradigm to **predictive maintenance**.
 
-## 💻 Installation & Execution
+By systematically analyzing **device-level SMART telemetry** such as:
 
-**1. Clone the repository**
+* Temperature
+* Error rates
+* Lifetime usage
+* Read/write statistics
+
+the machine learning engine identifies **recurring signatures of hardware degradation**.
+
+This allows IT administrators to **replace high-risk drives before catastrophic failure**, preventing:
+
+* Data loss
+* Server downtime
+* Infrastructure instability
+
+---
+
+# 🚀 Key Features
+
+### 🧠 Random Forest Prediction Engine
+
+A robust machine learning classifier trained to detect **complex, non-linear relationships** in NVMe telemetry data.
+
+### ⚖️ Advanced Data Balancing (SMOTE)
+
+The dataset had a **98% class imbalance**, where most drives were healthy.
+SMOTE (Synthetic Minority Over-sampling Technique) was used to generate synthetic samples for rare failure classes such as:
+
+* Firmware crashes
+* Early-life manufacturing defects
+
+### 📊 ThinkSystem Diagnostic Dashboard
+
+A modern **Streamlit-based web dashboard** featuring:
+
+* Interactive telemetry analysis
+* Real-time failure predictions
+* Lenovo-inspired UI styling
+* Drive health risk indicators
+
+---
+
+# 🧠 Hardware Failure Patterns
+
+Using **Exploratory Data Analysis (EDA)** and machine learning, the system identifies the following NVMe failure patterns:
+
+### 🔴 Pattern 1 — Wear-Out Failure
+
+Occurs when SSDs approach their write endurance limits.
+
+Indicators:
+
+* High **TBW (Terabytes Written)**
+* High **Percent Life Used**
+* Large **Power-On Hours**
+
+---
+
+### 🟠 Pattern 4 — Controller / Firmware Failure
+
+Controller instability caused by firmware issues.
+
+Indicators:
+
+* High **read/write error spikes**
+* Low or zero **media errors**
+* Specific **firmware version correlations**
+
+---
+
+### 🟡 Pattern 5 — Early-Life Failure
+
+Manufacturing defects appearing in the early lifetime of the drive.
+
+Indicators:
+
+* **Low power-on hours (<3000)**
+* Rapid error accumulation
+* Abnormally high failure probability
+
+---
+
+⚠️ **Note**
+
+Pattern **2 (Thermal Failure)** and **3 (Power-Related Failure)** are supported by the system architecture but were **not present in the provided synthetic dataset**.
+
+---
+
+# 🧰 Tech Stack
+
+| Component        | Technology           |
+| ---------------- | -------------------- |
+| Language         | Python               |
+| Data Processing  | Pandas               |
+| Machine Learning | Scikit-Learn         |
+| Model            | Random Forest        |
+| Dashboard        | Streamlit            |
+| Visualization    | Matplotlib / Seaborn |
+
+---
+
+# 💻 Installation & Execution
+
+## 1️⃣ Clone the Repository
+
 ```bash
-git clone [https://github.com/your-username/nvme-health-core.git](https://github.com/your-username/nvme-health-core.git)
+git clone https://github.com/your-username/nvme-health-core.git
 cd nvme-health-core
+```
+
+---
+
+## 2️⃣ Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## 3️⃣ Train the Model (Backend)
+
+```bash
+python model_training.py
+```
+
+This step:
+
+* preprocesses the dataset
+* balances the data using **SMOTE**
+* trains the **Random Forest classifier**
+* saves the trained model
+
+---
+
+## 4️⃣ Launch the Dashboard (Frontend)
+
+```bash
+streamlit run app.py
+```
+
+The dashboard will open in your browser.
+
+Features include:
+
+* Drive health prediction
+* Failure probability scoring
+* SMART telemetry visualization
+
+---
+
+# 📊 Example Prediction Output
+
+```
+NVMe Drive Health Report
+
+Drive Status: ⚠️ HIGH RISK
+
+Failure Probability: 87%
+
+Most Likely Cause:
+Wear-Out Failure
+```
+
+---
+
+# 📂 Project Structure
+
+```
+nvme-health-core
+│
+├── dataset
+│   └── nvme_drive_dataset.csv
+│
+├── notebooks
+│   └── exploratory_analysis.ipynb
+│
+├── model_training.py
+├── app.py
+├── requirements.txt
+└── README.md
+```
+
+---
+
+# 👥 Project Team
+
+**Ritun Jain**
+Project Lead — ML Architecture & Full-Stack Integration
+
+**Member 2 Name**
+Data Engineering & Exploratory Data Analysis
+
+**Member 3 Name**
+Statistical Modeling & Validation
+
+**Member 4 Name**
+UI/UX Design & Documentation
+
+---
+
+# ⭐ Future Improvements
+
+* Real-time NVMe telemetry monitoring
+* Integration with **Lenovo server management APIs**
+* Deep learning anomaly detection
+* Fleet-level predictive maintenance analytics
+* Alert system for enterprise IT infrastructure
+
+---
+
+# 📜 License
+
+This project is developed for **academic and research purposes**.
