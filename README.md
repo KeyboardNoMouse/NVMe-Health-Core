@@ -1,27 +1,29 @@
-# ⚡ NVMe Health Core: Predictive Telemetry Analysis
+# ⚡ Lenovo NVMe Health Core: Predictive Telemetry Analysis
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![Scikit-Learn](https://img.shields.io/badge/scikit--learn-%23F7931E.svg?style=for-the-badge&logo=scikit-learn&logoColor=white)
 ![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=Streamlit&logoColor=white)
 ![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white)
 
-An AI-powered diagnostics engine and full-stack web interface designed to predict NVMe drive failures before they happen. By analyzing raw SMART telemetry data, this system isolates hardware degradation signatures and categorizes them into distinct failure patterns.
+An enterprise-grade AI diagnostic engine and full-stack web interface built to predict NVMe drive failures across Lenovo ThinkSystem servers and ThinkPad devices before they occur.
 
-## 🎯 The Problem
-Data centers and consumer PCs rely heavily on NVMe drives, but sudden hardware failures can lead to catastrophic data loss. While drives report SMART (Self-Monitoring, Analysis, and Reporting Technology) telemetry, manually deciphering this data is inefficient. This project automates that process using machine learning to detect anomalies based on temperature spikes, media errors, and controller wear.
+## 🎯 Executive Summary
+Currently, NVMe failures are detected reactively—only after severe errors or hardware bricking. This project shifts the paradigm to **predictive maintenance**. By systematically analyzing device-level SMART telemetry (temperature, error rates, lifetime usage), this machine learning engine identifies the recurring signatures of hardware degradation. This allows IT administrators to replace high-risk drives safely before experiencing catastrophic data loss or system downtime.
 
 ## 🚀 Key Features
-* **Machine Learning Engine:** Utilizes a Random Forest Classifier to identify complex, non-linear relationships in hardware telemetry.
-* **Advanced Data Engineering:** Implements SMOTE (Synthetic Minority Over-sampling Technique) to solve severe class imbalance, allowing the model to detect extremely rare controller failures.
-* **Full-Stack Dashboard:** A sleek, interactive web interface built with Streamlit, custom CSS glassmorphism, and Lottie animations. 
-* **Real-Time Diagnostics:** Users can upload raw CSV server logs and instantly receive a parsed, color-coded health report for their entire drive fleet.
+* **Random Forest Engine:** A robust classification model trained to identify complex, non-linear relationships in raw hardware telemetry.
+* **Advanced Data Balancing (SMOTE):** Engineered synthetic telemetry data to overcome a 98% class imbalance, allowing the model to successfully detect extremely rare firmware crashes and early-life manufacturing defects.
+* **ThinkSystem Dashboard:** A sleek, interactive web interface built with Streamlit, featuring custom Lenovo-branded CSS and real-time fleet diagnostic metrics.
 
-## 🧠 The Data Science Process
-1. **Exploratory Data Analysis (EDA):** Analyzed 10,000 rows of drive data to identify three primary failure modes: End of Life (Wear-Out), Media Corruption, and Controller Errors.
-2. **Feature Engineering:** Extracted key warning signs, determining that `Percent_Life_Used` and `Read_Error_Rate` were the highest predictors of imminent failure.
-3. **Handling Class Imbalance:** The dataset contained 98% healthy drives and <2% failing drives. Standard accuracy metrics were misleading (the "Accuracy Trap"). We deployed SMOTE to synthesize minority class data, vastly improving the model's recall for rare corruption events.
+## 🧠 Hardware Failure Patterns
+Based on the provided synthetic dataset representing real-world NVMe SMART logs, we performed Exploratory Data Analysis (EDA) and trained the model to isolate the following distinct anomaly clusters:
+* **Pattern 1 (Wear-Out Failure):** Drives nearing end-of-life with maxed-out TBW (Terabytes Written) and life percentage used.
+* **Pattern 4 (Controller/Firmware Failure):** Controller instability characterized by massive spikes in read/write error rates without physical media errors.
+* **Pattern 5 (Early-Life Defect):** Rapid error accumulation in early usage (<3000 hours), indicating manufacturing flaws.
 
-## 💻 Installation & Usage
+*(Note: Thermal Failures and Power-Related Failures are supported by the architecture but were not present in the provided synthetic dataset.)*
+
+## 💻 Installation & Execution
 
 **1. Clone the repository**
 ```bash
