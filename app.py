@@ -117,7 +117,7 @@ with st.sidebar:
 # --- MAIN DASHBOARD ---
 c1, c2 = st.columns([4, 1])
 with c1:
-    st.title("Lenovo NVMe Health Core")
+    st.title("NVMe Health Core")
     st.markdown("<p style='opacity:0.6; font-size:1.1rem;'>ThinkSystem AI Telemetry Monitoring Service</p>", unsafe_allow_html=True)
 with c2:
     if lottie_pulse:
