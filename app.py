@@ -83,9 +83,9 @@ model = load_model()
 
 status_map = {
     0: "✅ Healthy",
-    1: "⏳ Wear-Out Failure (Pattern 1)",
-    4: "⚙️ Controller/Firmware Failure (Pattern 4)",
-    5: "📉 Rapid Error Accumulation (Pattern 5)"
+    1: "⏳ Wear-Out Failure (Mode 1)",
+    4: "⚙️ Controller/Firmware Failure (Mode 4)",
+    5: "📉 Rapid Error Accumulation (Mode 5)"
 }
 
 # --- SIDEBAR: SIMULATION LAB ---
@@ -118,7 +118,7 @@ with st.sidebar:
 c1, c2 = st.columns([4, 1])
 with c1:
     st.title("NVMe Health Core")
-    st.markdown("<p style='opacity:0.6; font-size:1.1rem;'>ThinkSystem AI Telemetry Monitoring Service</p>", unsafe_allow_html=True)
+    st.markdown("<p style='opacity:0.6; font-size:1.1rem;'>AI Telemetry Monitoring Service</p>", unsafe_allow_html=True)
 with c2:
     if lottie_pulse:
         st_lottie(lottie_pulse, height=100)
